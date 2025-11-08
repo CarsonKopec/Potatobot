@@ -63,15 +63,12 @@ class Faq {
     createActionRow(layer) {
         const live_config = util.liveConfig()
 
-        const another_row = new ActionRowBuilder()
-            .addComponents(util.createButton("Back to Home", "Secondary", "home"))
-
         const selector_last_element = new ActionRowBuilder()
             .addComponents(this.createSelectMenu(layer))
 
         switch (active_layer) {
             default:
-                return [another_row, selector_last_element]
+                return [selector_last_element]
             case "found_footage":
                 const row = new ActionRowBuilder()
                     .addComponents(
@@ -81,10 +78,10 @@ class Faq {
                         util.createButton("Video Tutorial", "Link", null, live_config.links.wiki_install),
                         //block
                     )
-                return [row, another_row, selector_last_element]
+                return [row, selector_last_element]
 
             case "some_mod":
-                return [another_row, selector_last_element]
+                return [selector_last_element]
         }
 
         // const row = new ActionRowBuilder()
@@ -182,5 +179,6 @@ class Faq {
         })
     }
 }
+
 
 module.exports.Faq = Faq
